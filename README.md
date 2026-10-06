@@ -2,7 +2,7 @@
 
 A FastAPI service that serves a scikit-learn model trained on the classic Iris dataset.
 
-**Live API:** _URL added after deployment_ · Interactive docs at `/docs`
+**Live API:** https://iris-fastapi-gamma.vercel.app · Interactive docs: https://iris-fastapi-gamma.vercel.app/docs
 
 ## What the model predicts
 
@@ -72,7 +72,8 @@ python train.py
 uvicorn main:app --reload
 ```
 
-Then open http://127.0.0.1:8000/docs, or call the API from another terminal:
+Then open http://127.0.0.1:8000/docs, or call the API from another terminal
+(swap in `https://iris-fastapi-gamma.vercel.app` to hit the live deployment):
 
 ```bash
 curl -X POST http://127.0.0.1:8000/predict \
