@@ -80,13 +80,18 @@ curl -X POST http://127.0.0.1:8000/predict \
   -d '{"sepal_length": 5.1, "sepal_width": 3.5, "petal_length": 1.4, "petal_width": 0.2}'
 ```
 
-## Deploy (Render)
+## Deploy (Vercel)
 
-The repo includes `render.yaml`. On Render, choose **New → Blueprint**, select this repo, and deploy.
-Or create a **Web Service** manually with:
+Vercel detects the FastAPI `app` in `main.py` automatically, so no `vercel.json` is needed.
+It installs `requirements.txt` and uses the Python version in `.python-version` (3.12).
 
-- Build command: `pip install -r requirements.txt`
-- Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+```bash
+npm i -g vercel
+vercel login
+vercel deploy --prod
+```
+
+Or import the GitHub repo from the Vercel dashboard (**Add New → Project**).
 
 ## Project structure
 
@@ -95,6 +100,6 @@ Or create a **Web Service** manually with:
 ├── train.py           # Trains the model and writes model.pkl
 ├── model.pkl          # Trained model
 ├── requirements.txt   # Pinned dependencies
-├── render.yaml        # Render deployment config
-└── .python-version    # Python 3.11.9 (matches the version that trained model.pkl)
+├── .python-version    # Python 3.12 (used to train model.pkl and by Vercel)
+└── .vercelignore      # Keeps the local virtualenv out of the deployment
 ```
